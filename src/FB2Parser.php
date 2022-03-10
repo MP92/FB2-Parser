@@ -50,6 +50,7 @@ class FB2Parser extends FB2AttributesManager
     $this->parseAuthors();
     $this->parseTranslators();
     $this->parseBookInfo();
+    $this->parseEpigraph();
     $this->parseChapters();
   }
 
@@ -84,6 +85,11 @@ class FB2Parser extends FB2AttributesManager
   private function parseBookInfo(): void
   {
     $this->book->setInfo((new Parser\BookInfo($this->xmlDOM->first('description')))->parse());
+  }
+
+  private function parseEpigraph(): void
+  {
+    $this->book->setEpigraph((new Parser\Epigraph($this->xmlDOM))->parse());
   }
 
   private function parseChapters(): void

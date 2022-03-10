@@ -51,6 +51,11 @@ class FB2Controller extends FB2AttributesManager
     return $this->book->translators;
   }
 
+    public function getEpigraph(): ?Epigraph
+    {
+        return $this->book->getEpigraph();
+    }
+
   /**
    * @param array $attributes
    */

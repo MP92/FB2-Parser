@@ -1,6 +1,7 @@
 <?php
 
 namespace Tizis\FB2\Model;
+
 /**
  * Class Book
  * @package FB2\Model
@@ -15,6 +16,10 @@ class Book
    * @var array
    */
   private $translators = [];
+  /**
+   * @var Epigraph|null
+   */
+  private $epigraph;
   /**
    * @var array
    */
@@ -54,6 +59,22 @@ class Book
   public function setTranslators(array $value): void
   {
     $this->translators = $value;
+  }
+
+  /**
+   * @return Epigraph|null
+   */
+  public function getEpigraph(): ?Epigraph
+  {
+      return $this->epigraph;
+  }
+
+  /**
+   * @param Epigraph|null $epigraph
+   */
+  public function setEpigraph(?Epigraph $epigraph): void
+  {
+      $this->epigraph = $epigraph;
   }
 
   /**
