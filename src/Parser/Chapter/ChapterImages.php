@@ -63,10 +63,13 @@ class ChapterImages extends Parser implements IChapterNodes
         // if images is exist
         if (isset($images[$noteId])) {
           $image = $images[$noteId];
+
+          $imageExt = preg_replace('/^.*\.([^\.]+)$/', '$1', $image['id_original']);
+
           // save image
-          Image::make(base64_decode($image['content']))->save($imagesDirectory . '/' . $image['id'] . '.jpg');
+          Image::make(base64_decode($image['content']))->save($imagesDirectory . '/' . $image['id'] . ".$imageExt");
           // make new img element
-          $href = $imagesWebPath ? $imagesWebPath . '/' . $image['id'] . '.jpg' : $image['id'] . '.jpg';
+          $href = $imagesWebPath ? $imagesWebPath . '/' . $image['id'] . ".$imageExt" : $image['id'] . ".$imageExt";
           $element = new Element('img', '', ['src' => $href]);
           $node->replace($element);
         }

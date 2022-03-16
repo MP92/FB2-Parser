@@ -23,7 +23,7 @@ class Epigraph extends Parser
 
         $items = (array)$this->xmlDOM->find('body>epigraph');
         foreach ($items as $key => $item) {
-            $data[] = $item->innerHTML();
+            $data[] = $item->text();
         }
 
         if (!empty($data)) {
