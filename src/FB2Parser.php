@@ -14,8 +14,8 @@ class FB2Parser extends FB2AttributesManager
   /**
    * @var Book
    */
-  protected $book;
-  private $xmlDOM;
+  protected Book $book;
+  private Document $xmlDOM;
 
   /**
    * FB2Parser constructor.
@@ -38,7 +38,9 @@ class FB2Parser extends FB2AttributesManager
    */
   private function loadElements($xml): void
   {
-    $this->xmlDOM = (new Document())->loadXml($xml);
+    $this->xmlDOM = new Document();
+    $this->xmlDOM->loadXml($xml);
+
     $this->book = new Book();
   }
 
